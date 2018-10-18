@@ -68,6 +68,11 @@ if [ -z "$DD_API_KEY" ]; then
   DISABLE_DATADOG_AGENT=1
 fi
 
+if [[ $DYNO =~ ^(scheduler|run)\.[0-9]+ ]]; then
+  echo "Disabling DataDog for scheduler and run Dynos"
+  DISABLE_DATADOG_AGENT=1
+fi
+
 if [ -z "$DD_HOSTNAME" ]; then
   if [ "$DD_DYNO_HOST" == "true" ]; then
     # Set the hostname to dyno name and ensure rfc1123 compliance.
