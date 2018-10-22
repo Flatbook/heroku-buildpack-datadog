@@ -68,7 +68,7 @@ if [ -z "$DD_API_KEY" ]; then
   DISABLE_DATADOG_AGENT=1
 fi
 
-if [[ $DYNO =~ ^(scheduler|run)\.[0-9]+ ]]; then
+if [[ $DYNO =~ ^(scheduler|run|release)\.[0-9]+ ]]; then
   echo "Disabling DataDog for scheduler and run Dynos"
   DISABLE_DATADOG_AGENT=1
 fi
